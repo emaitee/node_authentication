@@ -1,0 +1,33 @@
+extends layout 
+
+block content
+	.register-photo
+		if errors
+			each error, i in errors
+				div.alert.alert-danger #{error.msg}
+
+		.form-container
+			.image-holder
+			form(method="post", action='/users/register', enctype="multipart/form-data")
+				h2.text-center
+					strong Create an account.
+				div.form-group
+					input.form-control(type="name", name="name", placeholder="Name")
+				div.form-group
+					input.form-control(type="username", name="username", placeholder="Username")
+				div.form-group
+					input.form-control(type="email", name="email", placeholder="Email")
+				div.form-group
+					input.form-control(type="password", name="password", placeholder="Password")
+				div.form-group
+					input.form-control(type="password", name="password-repeat", placeholder="Password (repeat)")
+				div.form-group
+					div.form-check
+						label.form-check-label
+							input.form-check-input(type="checkbox") 
+							I agree to the license terms.
+				div.form-group
+					button.btn.btn-info.btn-block(type="submit") Sign Up
+				a.already(href="#") You already have an account? Login here
+
+

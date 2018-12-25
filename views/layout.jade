@@ -1,0 +1,34 @@
+doctype html
+html(lang='en')
+	head
+		title= Welcome
+		link(href='/stylesheets/bootstrap.css', rel='stylesheet')
+		link(rel='stylesheet', href='/stylesheets/style.css')
+		link(rel='stylesheet', href='/stylesheets/register.css')
+	body
+		.container
+			nav.navbar.navbar-expand-lg.navbar-light.bg-light
+				a.navbar-brand(href="#") NodeAuth
+				button.navbar-toggler(type="button", data-toggle="collapse", data-target="#navbarNavDropdown", aria-controls="navbarNavDropdown", arial-expanded="false", aria-label="Toggle navigation")
+					span.navbar-toggler-icon
+				div.collapse.navbar-collapse#navbarNavDropdown
+					ul.navbar-nav
+						if user
+							li.nav-item(class=(title == 'Members' ? 'active' : ''))
+								a.nav-link(href="/") Members
+						if !user
+							li.nav-item(class=(title == 'Login' ? 'active' : ''))
+								a.nav-link(href="/users/login") Login
+						if !user
+							li.nav-item(class=(title == 'Register' ? 'active' : ''))
+								a.nav-link(href="/users/register") Register
+					ul.navbar-nav.navbar-right
+						li.nav-item
+							a.nav-link(href="/users/logout") Logout
+			.container
+				!= messages()
+			block content
+
+	script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js')
+	script(src='/javascripts/bootstrap.js')
+
